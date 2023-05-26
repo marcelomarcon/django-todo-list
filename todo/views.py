@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponse
 
+from todo.models import Todo
+
 # Create your views here.
 
 def index(request):
@@ -7,4 +9,8 @@ def index(request):
 
 
 def todo_list(request):
-    return render(request, 'todo/index.html')
+    todos = Todo.objects.all()
+    return render(request, 'todo/index.html', {'todos': todos})
+
+def add_task(request):
+    ...
